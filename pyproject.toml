@@ -1,0 +1,32 @@
+[project]
+name = "road_budgets"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Hana Kessler", email = "hanakessler18@gmail.com"},
+]
+dependencies = [
+    "argparse>=1.4.0",
+    "bs4>=0.0.2",
+    "pytest>=8.3.3"
+    
+]
+requires-python = "==3.10.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+# subcommands to be used in composite commands
+_format = "ruff format ."
+_lint_fix = "ruff check . --fix"
+format = { composite = ["_format", "_lint_fix"] }
+
+[dependency-groups]
+dev = [
+    "ruff>=0.8.1",
+    "mypy>=1.13.0",
+]
